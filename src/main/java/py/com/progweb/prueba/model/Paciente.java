@@ -38,10 +38,10 @@ public class Paciente {
     @Column(name="telefono")
     private String telefono;
     
-    @Column(name="fecha_nacimiento")
-    @Temporal(javax.persistence.TemporalType.DATE)
+   /* @Column(name="fechaNacimiento")
+    
     private Date fechaNacimiento;
-
+*/
     public Integer getId() {
         return id;
     }
@@ -89,13 +89,13 @@ public class Paciente {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
+/*
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
-    }
+    }*/
     
 }
