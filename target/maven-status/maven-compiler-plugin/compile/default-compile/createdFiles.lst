@@ -2,6 +2,9 @@ py\com\progweb\prueba\ejb\PersonaDao.class
 py\com\progweb\prueba\model\Persona.class
 py\com\progweb\prueba\model\Paciente.class
 py\com\progweb\prueba\rest\PacienteRest.class
+py\com\progweb\prueba\model\Medico.class
+py\com\progweb\prueba\rest\MedicoRest.class
+py\com\progweb\prueba\ejb\MedicoDao.class
 py\com\progweb\prueba\ejb\PacienteDao.class
 py\com\progweb\prueba\rest\ApplicationConfig.class
 py\com\progweb\prueba\rest\PersonaRest.class
