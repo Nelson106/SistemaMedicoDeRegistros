@@ -42,6 +42,17 @@ public class Paciente {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaNacimiento;
 
+    
+    @OneToOne(mappedBy="paciente",cascade=CascadeType.ALL,orphanRemoval=true, fetch=FetchType.LAZY)
+    private Ficha ficha;
+
+    public Ficha getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
+    }
     public Integer getId() {
         return id;
     }

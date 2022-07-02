@@ -5,11 +5,15 @@
 package py.com.progweb.prueba.model;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,8 +29,8 @@ import lombok.Data;
 public class Medico {
     @Id
     @Column(name="id")
-    @GeneratedValue(generator="pacienteSec",strategy=GenerationType.SEQUENCE)
-    @SequenceGenerator(name="pacienteSec",sequenceName="seq_paciente",allocationSize = 0)
+    @GeneratedValue(generator="medicoSec",strategy=GenerationType.SEQUENCE)
+    @SequenceGenerator(name="medicoSec",sequenceName="seq_medico",allocationSize = 0)
     private Integer id;
     
     @Column(name="nombre")
@@ -56,7 +60,17 @@ public class Medico {
     
     @Column(name="password")
     private String password;
+   
+    @OneToMany(mappedBy="medico",cascade=CascadeType.ALL,orphanRemoval=true)
+    private Ficha ficha;
 
+    public Ficha getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
+    }
     public Integer getId() {
         return id;
     }
