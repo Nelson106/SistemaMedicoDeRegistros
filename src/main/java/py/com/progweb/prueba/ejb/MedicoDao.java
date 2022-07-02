@@ -5,6 +5,7 @@
 package py.com.progweb.prueba.ejb;
 
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -15,6 +16,7 @@ import py.com.progweb.prueba.model.Medico;
  *
  * @author nruiz
  */
+@Stateless
 public class MedicoDao {
      @PersistenceContext(unitName="pruebaPU")
     

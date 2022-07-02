@@ -46,6 +46,12 @@ public class PacienteDao {
         em.remove(paciente);
     }
      
+    
+     public List<Paciente> ListarPacienteaApellido( String apellido) {
+        Query q = this.em.createQuery("select p from Paciente p where apellido=:apellido")
+                .setParameter("apellido",apellido);
+        return (List<Paciente>) q.getResultList();
+    }
      
      
     

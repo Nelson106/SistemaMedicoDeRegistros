@@ -32,9 +32,49 @@ public class Detalle {
     @Column(name="tratamiento")
     private String tratamiento;
     
-    
+   
     @ManyToOne()
     @JoinColumn(name="ficha_id")
     Ficha ficha;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
+
+    public String getDiagnostico() {
+        return diagnostico;
+    }
+
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
+    }
+
+    public String getTratamiento() {
+        return tratamiento;
+    }
+
+    public void setTratamiento(String tratamiento) {
+        this.tratamiento = tratamiento;
+    }
+
+    public Ficha getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
+    }
     
 }

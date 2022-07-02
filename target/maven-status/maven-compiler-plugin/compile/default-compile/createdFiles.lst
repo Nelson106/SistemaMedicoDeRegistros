@@ -3,10 +3,14 @@ py\com\progweb\prueba\model\Persona.class
 py\com\progweb\prueba\model\Paciente.class
 py\com\progweb\prueba\rest\PacienteRest.class
 py\com\progweb\prueba\rest\MedicoRest.class
+py\com\progweb\prueba\rest\DetalleRest.class
 py\com\progweb\prueba\ejb\PacienteDao.class
 py\com\progweb\prueba\rest\ApplicationConfig.class
 py\com\progweb\prueba\rest\PersonaRest.class
 py\com\progweb\prueba\model\Medico.class
 py\com\progweb\prueba\ejb\MedicoDao.class
 py\com\progweb\prueba\model\Ficha.class
+py\com\progweb\prueba\rest\FichaRest.class
+py\com\progweb\prueba\ejb\DetalleDao.class
+py\com\progweb\prueba\ejb\FichaDao.class
 py\com\progweb\prueba\model\Detalle.class

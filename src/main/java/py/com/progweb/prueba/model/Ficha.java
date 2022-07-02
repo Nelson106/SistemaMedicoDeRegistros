@@ -5,6 +5,7 @@
 package py.com.progweb.prueba.model;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.*;
 import lombok.Data;
@@ -16,7 +17,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="detalle")
+@Table(name="ficha")
 public class Ficha {
     @Id
     @Column(name="id")
@@ -40,6 +41,48 @@ public class Ficha {
     Medico medico;
    
     @OneToMany(mappedBy="ficha",cascade=CascadeType.ALL,orphanRemoval=true)
-    private Detalle detalle;
+    private List<Detalle> detalle=null;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    public List<Detalle> getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(List<Detalle> detalle) {
+        this.detalle = detalle;
+    }
+
+   
     
 }

@@ -5,6 +5,7 @@
 package py.com.progweb.prueba.model;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -61,16 +62,18 @@ public class Medico {
     @Column(name="password")
     private String password;
    
-    @OneToMany(mappedBy="medico",cascade=CascadeType.ALL,orphanRemoval=true)
-    private Ficha ficha;
+   @OneToMany(mappedBy="medico",cascade=CascadeType.ALL,orphanRemoval=true)
+    private List<Ficha> ficha=null;
 
-    public Ficha getFicha() {
+    public List<Ficha> getFicha() {
         return ficha;
     }
 
-    public void setFicha(Ficha ficha) {
+    public void setFicha(List<Ficha> ficha) {
         this.ficha = ficha;
     }
+
+  
     public Integer getId() {
         return id;
     }
