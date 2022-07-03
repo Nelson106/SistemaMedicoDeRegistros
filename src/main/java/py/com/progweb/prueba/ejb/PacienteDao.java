@@ -24,12 +24,14 @@ public class PacienteDao {
     
      public List<Paciente> ListarPacientes() {
         Query q = this.em.createQuery("select p from Paciente p");
+       
         return (List<Paciente>) q.getResultList();
     }
      
      
      public Paciente GetPaciente(int pacienteId) {
-        System.out.println("asdasdasdaaaaaaaaabbbbbbbbbbbbb "+pacienteId);
+         Paciente paciente=em.find(Paciente.class, pacienteId);
+         System.out.println("aaaaaaaaaaaaaaaaaaa"+paciente.getId());
         return em.find(Paciente.class, pacienteId);
     }
      

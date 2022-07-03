@@ -10,7 +10,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import py.com.progweb.prueba.model.Ficha;
-
+import py.com.progweb.prueba.model.Detalle;
+import py.com.progweb.prueba.model.Medico;
 
 /**
  *
@@ -18,7 +19,7 @@ import py.com.progweb.prueba.model.Ficha;
  */
 @Stateless
 public class FichaDao {
-     @PersistenceContext(unitName="pruebaPU")
+    @PersistenceContext(unitName="pruebaPU")
     
     private EntityManager em;
     public void CrearFicha(Ficha ficha){
@@ -47,5 +48,12 @@ public class FichaDao {
     public void DeleteFicha(int id){
         Ficha ficha=GetFicha(id);
         em.remove(ficha);
+    }
+    
+     public List<Detalle> ListarFichasMedico(String especialidad) {
+        Query medico = this.em.createQuery("select m from Medico m where especialidad=:especialidad")
+                .setParameter("especialidad",especialidad);
+       // Query q = this.em.createQuery("select f from Ficha f");
+        return (List<Detalle>) medico.getResultList();
     }
 }

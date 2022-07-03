@@ -5,7 +5,9 @@
 package py.com.progweb.prueba.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -20,6 +22,9 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="ficha")
+@JsonIdentityInfo(
+  generator = ObjectIdGenerators.PropertyGenerator.class, 
+  property = "id")
 public class Ficha {
     @Id
     @Column(name="id")
@@ -32,21 +37,22 @@ public class Ficha {
     @Temporal(javax.persistence.TemporalType.DATE)
     Date fecha;
     
-    @JoinColumn(name="paciente_id")
+    
+
+   /* @JoinColumn(name="paciente_id")
     @OneToOne()
-    //@JsonBackReference(value="paciente-ficha")
     @JsonManagedReference(value="paciente-ficha")
     Paciente paciente;
-    
+    */
     @ManyToOne()
     @JoinColumn(name="medico_id")
-    @JsonManagedReference(value="medico-ficha")
+    @JsonBackReference(value="medico-ficha")
     Medico medico;
    
-    @OneToMany(mappedBy="ficha",cascade=CascadeType.ALL,orphanRemoval=true)
-    @JsonBackReference(value="detalle-ficha")
+   /* @OneToMany(mappedBy="ficha",cascade=CascadeType.ALL,orphanRemoval=true)
+    //@JsonManagedReference(value="detalle-ficha")
     private  List<Detalle> detalle=null;
-
+*/
     public Integer getId() {
         return id;
     }
@@ -63,14 +69,14 @@ public class Ficha {
         this.fecha = fecha;
     }
 
-    public Paciente getPaciente() {
+  /*  public Paciente getPaciente() {
         return paciente;
     }
 
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
-    }
-
+    }*/
+   
     public Medico getMedico() {
         return medico;
     }
@@ -79,14 +85,14 @@ public class Ficha {
         this.medico = medico;
     }
 
-   public List<Detalle> getDetalle() {
+ /*  public List<Detalle> getDetalle() {
         return detalle;
     }
 
     public void setDetalle(List<Detalle> detalle) {
         this.detalle = detalle;
     }
-
+*/
    
     
 }

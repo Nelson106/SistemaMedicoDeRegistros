@@ -60,4 +60,11 @@ public class FichaRest {
         fichaDao.DeleteFicha(fichaId);
         return Response.ok().build();
     }
+    
+    @POST
+    @Path("/especialidad")
+    public Response getMedicoEspecialidad(String especialidad) {
+               
+        return Response.ok(fichaDao.ListarFichasMedico(especialidad)).build();
+    }
 }

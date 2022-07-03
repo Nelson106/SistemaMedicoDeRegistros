@@ -37,9 +37,8 @@ public class Detalle {
    
     @ManyToOne()
     @JoinColumn(name="ficha_id")
-    @JsonManagedReference(value="detalle-ficha")
-   
-    Ficha ficha;
+   @JsonManagedReference(value="detalle-ficha")
+    private Ficha ficha;
 
     public Integer getId() {
         return id;

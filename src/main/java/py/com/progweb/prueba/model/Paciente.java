@@ -45,7 +45,7 @@ public class Paciente {
     private Date fechaNacimiento;
 
     
-    @JsonBackReference(value="paciente-ficha")
+   /* @JsonBackReference(value="paciente-ficha")
     @OneToOne(mappedBy="paciente",cascade=CascadeType.ALL,orphanRemoval=true, fetch=FetchType.LAZY)
     private Ficha ficha;
 
@@ -55,7 +55,7 @@ public class Paciente {
 
     public void setFicha(Ficha ficha) {
         this.ficha = ficha;
-    }
+    }*/
     public Integer getId() {
         return id;
     }
