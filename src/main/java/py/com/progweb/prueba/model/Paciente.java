@@ -4,6 +4,8 @@
  */
 package py.com.progweb.prueba.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.Date;
 import javax.persistence.*;
 import lombok.Data;
@@ -43,6 +45,7 @@ public class Paciente {
     private Date fechaNacimiento;
 
     
+    @JsonBackReference(value="paciente-ficha")
     @OneToOne(mappedBy="paciente",cascade=CascadeType.ALL,orphanRemoval=true, fetch=FetchType.LAZY)
     private Ficha ficha;
 

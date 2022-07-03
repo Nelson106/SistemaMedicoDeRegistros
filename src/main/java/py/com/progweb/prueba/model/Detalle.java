@@ -5,6 +5,8 @@
 package py.com.progweb.prueba.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 
 import lombok.Data;
@@ -35,6 +37,8 @@ public class Detalle {
    
     @ManyToOne()
     @JoinColumn(name="ficha_id")
+    @JsonManagedReference(value="detalle-ficha")
+   
     Ficha ficha;
 
     public Integer getId() {

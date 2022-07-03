@@ -4,6 +4,8 @@
  */
 package py.com.progweb.prueba.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -30,18 +32,20 @@ public class Ficha {
     @Temporal(javax.persistence.TemporalType.DATE)
     Date fecha;
     
-    
-    
     @JoinColumn(name="paciente_id")
-    @OneToOne(fetch=FetchType.LAZY)
+    @OneToOne()
+    //@JsonBackReference(value="paciente-ficha")
+    @JsonManagedReference(value="paciente-ficha")
     Paciente paciente;
     
     @ManyToOne()
     @JoinColumn(name="medico_id")
+    @JsonManagedReference(value="medico-ficha")
     Medico medico;
    
     @OneToMany(mappedBy="ficha",cascade=CascadeType.ALL,orphanRemoval=true)
-    private List<Detalle> detalle=null;
+    @JsonBackReference(value="detalle-ficha")
+    private  List<Detalle> detalle=null;
 
     public Integer getId() {
         return id;
@@ -75,7 +79,7 @@ public class Ficha {
         this.medico = medico;
     }
 
-    public List<Detalle> getDetalle() {
+   public List<Detalle> getDetalle() {
         return detalle;
     }
 
