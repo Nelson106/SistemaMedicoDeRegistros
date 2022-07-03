@@ -5,7 +5,9 @@
 package py.com.progweb.prueba.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.Date;
 import javax.persistence.*;
 import lombok.Data;
@@ -18,6 +20,9 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="paciente")
+@JsonIdentityInfo(
+  generator = ObjectIdGenerators.PropertyGenerator.class, 
+  property = "id")
 public class Paciente {
     @Id
     @Column(name="id")
@@ -44,9 +49,9 @@ public class Paciente {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaNacimiento;
 
-    
-   /* @JsonBackReference(value="paciente-ficha")
-    @OneToOne(mappedBy="paciente",cascade=CascadeType.ALL,orphanRemoval=true, fetch=FetchType.LAZY)
+    /*
+   // @JsonBackReference(value="paciente-ficha")
+    @OneToOne(mappedBy="paciente",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
     private Ficha ficha;
 
     public Ficha getFicha() {
@@ -55,7 +60,8 @@ public class Paciente {
 
     public void setFicha(Ficha ficha) {
         this.ficha = ficha;
-    }*/
+    }
+*/
     public Integer getId() {
         return id;
     }

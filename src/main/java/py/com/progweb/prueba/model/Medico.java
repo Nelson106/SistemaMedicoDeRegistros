@@ -31,9 +31,9 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="medico")
-@JsonIdentityInfo(
+/*@JsonIdentityInfo(
   generator = ObjectIdGenerators.PropertyGenerator.class, 
-  property = "id")
+  property = "id")*/
 public class Medico {
     @Id
     @Column(name="id")
@@ -68,9 +68,9 @@ public class Medico {
     
     @Column(name="password")
     private String password;
-   
+  /* 
    @OneToMany(mappedBy="medico",cascade=CascadeType.ALL,orphanRemoval=true,fetch = FetchType.EAGER)
-   @JsonManagedReference(value="medico-ficha")
+  // @JsonManagedReference(value="medico-ficha")
     private List<Ficha> ficha=null;
 
     public List<Ficha> getFicha() {
@@ -81,7 +81,7 @@ public class Medico {
         this.ficha = ficha;
     }
 
-  
+  */
     public Integer getId() {
         return id;
     }

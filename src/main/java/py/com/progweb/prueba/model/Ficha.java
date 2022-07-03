@@ -22,9 +22,9 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="ficha")
-@JsonIdentityInfo(
+/*@JsonIdentityInfo(
   generator = ObjectIdGenerators.PropertyGenerator.class, 
-  property = "id")
+  property = "id")*/
 public class Ficha {
     @Id
     @Column(name="id")
@@ -39,14 +39,16 @@ public class Ficha {
     
     
 
-   /* @JoinColumn(name="paciente_id")
-    @OneToOne()
-    @JsonManagedReference(value="paciente-ficha")
+    
+    @OneToOne
+    //@JsonManagedReference(value="paciente-ficha")
+    @JoinColumn(name="paciente_id")
     Paciente paciente;
-    */
-    @ManyToOne()
+    
+    @ManyToOne(fetch = javax.persistence.FetchType.EAGER)
     @JoinColumn(name="medico_id")
-    @JsonBackReference(value="medico-ficha")
+            
+   // @JsonBackReference(value="medico-ficha")
     Medico medico;
    
    /* @OneToMany(mappedBy="ficha",cascade=CascadeType.ALL,orphanRemoval=true)
@@ -69,13 +71,13 @@ public class Ficha {
         this.fecha = fecha;
     }
 
-  /*  public Paciente getPaciente() {
+    public Paciente getPaciente() {
         return paciente;
     }
 
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
-    }*/
+    }
    
     public Medico getMedico() {
         return medico;
