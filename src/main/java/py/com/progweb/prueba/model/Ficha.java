@@ -45,7 +45,7 @@ public class Ficha {
     @JoinColumn(name="paciente_id")
     Paciente paciente;
     
-    @ManyToOne()
+    @ManyToOne(fetch = javax.persistence.FetchType.EAGER)
     @JoinColumn(name="medico_id")
     Medico medico;
    

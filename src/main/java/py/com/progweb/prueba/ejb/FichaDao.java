@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import org.hornetq.utils.json.JSONObject;
 import py.com.progweb.prueba.model.Ficha;
 import py.com.progweb.prueba.model.Detalle;
 import py.com.progweb.prueba.model.Medico;
@@ -29,6 +30,7 @@ public class FichaDao {
      public List<Ficha> ListarFichas() {
         Query q = this.em.createQuery("select f from Ficha f");
         return (List<Ficha>) q.getResultList();
+        
     }
      
      
@@ -50,10 +52,14 @@ public class FichaDao {
         em.remove(ficha);
     }
     
-     public List<Detalle> ListarFichasMedico(String especialidad) {
-        Query medico = this.em.createQuery("select m from Medico m where especialidad=:especialidad")
+     public List<Detalle> ListarDetallesEspecialidadMedico(String especialidad) {
+      /*  Query medico = this.em.createQuery("select m from Medico m where m.especialidad=:especialidad")
+                .setParameter("especialidad",especialidad);*/
+    /*  JSONObject obj=especialidad.toJson();
+      System.out.println("aaaaaaaaaaaaaaaa"+especialidad['especialidad']);*/
+        Query q = this.em.createQuery("select d from Detalle d where d.ficha.medico.especialidad =:especialidad")
                 .setParameter("especialidad",especialidad);
-       // Query q = this.em.createQuery("select f from Ficha f");
-        return (List<Detalle>) medico.getResultList();
+        System.out.println("bbbbbbbbbbbbbbbbbbbb"+ (List<Detalle>) q.getResultList());
+        return (List<Detalle>) q.getResultList();
     }
 }

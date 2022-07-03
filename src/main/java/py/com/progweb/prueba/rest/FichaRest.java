@@ -61,10 +61,10 @@ public class FichaRest {
         return Response.ok().build();
     }
     
-    @POST
-    @Path("/especialidad")
-    public Response getMedicoEspecialidad(String especialidad) {
+    @GET
+    @Path("/especialidad/{especialidad}")
+    public Response getMedicoEspecialidad(@PathParam("especialidad") String especialidad) {
                
-        return Response.ok(fichaDao.ListarFichasMedico(especialidad)).build();
+        return Response.ok(fichaDao.ListarDetallesEspecialidadMedico(especialidad)).build();
     }
 }
