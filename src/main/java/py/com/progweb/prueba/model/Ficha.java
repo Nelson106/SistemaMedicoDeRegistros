@@ -45,10 +45,8 @@ public class Ficha {
     @JoinColumn(name="paciente_id")
     Paciente paciente;
     
-    @ManyToOne(fetch = javax.persistence.FetchType.EAGER)
+    @ManyToOne()
     @JoinColumn(name="medico_id")
-            
-   // @JsonBackReference(value="medico-ficha")
     Medico medico;
    
    /* @OneToMany(mappedBy="ficha",cascade=CascadeType.ALL,orphanRemoval=true)
