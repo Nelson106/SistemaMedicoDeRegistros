@@ -7,6 +7,7 @@ package py.com.progweb.prueba.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.Date;
 import javax.persistence.*;
 
 import lombok.Data;
@@ -33,6 +34,18 @@ public class Detalle {
     
     @Column(name="tratamiento")
     private String tratamiento;
+    
+    @Column(name="fecha")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fecha;
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
     
    
     @ManyToOne()

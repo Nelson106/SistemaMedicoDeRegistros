@@ -50,6 +50,20 @@ public class MedicoRest {
         return Response.ok(medicoDao.GetMedico(medicoId)).build();
     }
     
+    @GET
+    @Path("/especialidad/{especialidad}")
+    public Response getMedicoEspecialidad(@PathParam("especialidad") String especialidad) {
+               
+        return Response.ok(medicoDao.GetMedicoEspecialidad(especialidad)).build();
+    }
+    
+    @POST
+    @Path("/cedula")
+    public Response getMedicoCedula(Medico medico) {
+            System.out.println("AAAAAAAAAAAAAAAAAAAAA"+ medico.getCedula());   
+        return Response.ok(medicoDao.GetMedicoCedula(medico.getCedula())).build();
+    }
+    
     @PUT
     @Path("/update")
     public Response updateMedico(Medico medico) {

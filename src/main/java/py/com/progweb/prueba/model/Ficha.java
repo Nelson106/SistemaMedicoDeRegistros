@@ -6,6 +6,7 @@ package py.com.progweb.prueba.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.Date;
@@ -22,9 +23,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="ficha")
-/*@JsonIdentityInfo(
-  generator = ObjectIdGenerators.PropertyGenerator.class, 
-  property = "id")*/
+
 public class Ficha {
     @Id
     @Column(name="id")
@@ -40,8 +39,10 @@ public class Ficha {
     
 
     
-    @OneToOne
+    //@OneToOne()
+    @ManyToOne(fetch = javax.persistence.FetchType.EAGER)
     //@JsonManagedReference(value="paciente-ficha")
+    //@JsonIgnoreProperties ( "proveedores de costos" )
     @JoinColumn(name="paciente_id")
     Paciente paciente;
     
@@ -49,7 +50,7 @@ public class Ficha {
     @JoinColumn(name="medico_id")
     Medico medico;
    
-   /* @OneToMany(mappedBy="ficha",cascade=CascadeType.ALL,orphanRemoval=true)
+   /*@OneToMany(mappedBy="ficha",cascade=CascadeType.ALL,orphanRemoval=true)
     //@JsonManagedReference(value="detalle-ficha")
     private  List<Detalle> detalle=null;
 */

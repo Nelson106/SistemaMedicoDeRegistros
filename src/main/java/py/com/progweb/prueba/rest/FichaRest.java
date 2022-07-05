@@ -12,6 +12,8 @@ import py.com.progweb.prueba.ejb.DetalleDao;
 import py.com.progweb.prueba.ejb.FichaDao;
 import py.com.progweb.prueba.model.Detalle;
 import py.com.progweb.prueba.model.Ficha;
+import py.com.progweb.prueba.model.Medico;
+import py.com.progweb.prueba.model.Paciente;
 
 
 /**
@@ -28,8 +30,8 @@ public class FichaRest {
      @POST
     @Path("/")
     public Response crear(Ficha ficha){
-        this.fichaDao.CrearFicha(ficha);
-        return Response.ok().build();
+        int id=this.fichaDao.CrearFicha(ficha);
+        return Response.ok(id).build();
     }
     
     @GET
@@ -66,5 +68,37 @@ public class FichaRest {
     public Response getMedicoEspecialidad(@PathParam("especialidad") String especialidad) {
                
         return Response.ok(fichaDao.ListarDetallesEspecialidadMedico(especialidad)).build();
+    }
+    
+    @POST
+    @Path("/medicoCedula")
+    public Response ListarDetallesMedicoPorCedula( Medico medico) {
+       
+         
+        return Response.ok(fichaDao.ListarDetallesMedicoPorCedula(medico.getCedula())).build();
+    }
+    
+    
+    @POST
+    @Path("/pacienteCedula")
+    public Response ListarDetallesPacientePorCedula( Paciente paciente) {
+       
+         
+        return Response.ok(fichaDao.ListarDetallesPacientePorCedula(paciente.getCedula())).build();
+    }
+    
+    
+    @POST
+    @Path("/detalleFecha")
+    public Response ListarDetallesPorFecha( Detalle detalle) {
+           
+        return Response.ok(fichaDao.ListarDetallesPorFecha(detalle.getFecha())).build();
+    }
+    
+    @GET
+    @Path("/fichaMedico/{medicoId}")
+    public Response GetFichaPorMedicos(@PathParam("medicoId") int medicoId) {
+               
+        return Response.ok(fichaDao.GetFichaPorMedicos(medicoId)).build();
     }
 }

@@ -4,6 +4,7 @@
  */
 package py.com.progweb.prueba.ejb;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -23,8 +24,19 @@ public class FichaDao {
     @PersistenceContext(unitName="pruebaPU")
     
     private EntityManager em;
-    public void CrearFicha(Ficha ficha){
+    public int CrearFicha(Ficha ficha){
         em.persist(ficha);
+       
+        List <Ficha> list=GetFichaActual(ficha.getPaciente().getId());
+         
+        return list.get(0).getId() ;
+    }
+    
+     public List<Ficha> GetFichaActual(int pacienteId) {
+        Query q = this.em.createQuery("select f from Ficha f where f.paciente.id =:pacienteId ")
+                .setParameter("pacienteId", pacienteId);
+       
+        return (List<Ficha>) q.getResultList();
     }
     
      public List<Ficha> ListarFichas() {
@@ -57,9 +69,42 @@ public class FichaDao {
                 .setParameter("especialidad",especialidad);*/
     /*  JSONObject obj=especialidad.toJson();
       System.out.println("aaaaaaaaaaaaaaaa"+especialidad['especialidad']);*/
-        Query q = this.em.createQuery("select d from Detalle d where d.ficha.medico.especialidad =:especialidad")
+        Query q = this.em.createQuery("select d from Detalle d where d.ficha.medico.especialidad =:especialidad order by d.ficha.paciente.id asc")
                 .setParameter("especialidad",especialidad);
         System.out.println("bbbbbbbbbbbbbbbbbbbb"+ (List<Detalle>) q.getResultList());
         return (List<Detalle>) q.getResultList();
+    }
+     
+      public List<Detalle> ListarDetallesMedicoPorCedula(String cedula) {
+          
+        Query q = this.em.createQuery("select d from Detalle d where d.ficha.medico.cedula =:cedula order by d.ficha.paciente.id asc")
+                .setParameter("cedula",cedula);
+       
+        return (List<Detalle>) q.getResultList();
+    }
+      
+      
+     public List<Detalle> ListarDetallesPacientePorCedula(String cedula) {
+          
+        Query q = this.em.createQuery("select d from Detalle d where d.ficha.paciente.cedula =:cedula")
+                .setParameter("cedula",cedula);
+      
+        return (List<Detalle>) q.getResultList();
+    }
+     
+     
+      public List<Detalle> ListarDetallesPorFecha(Date fecha) {
+          
+        Query q = this.em.createQuery("select d from Detalle d where d.fecha =:fecha")
+                .setParameter("fecha",fecha);
+      
+        return (List<Detalle>) q.getResultList();
+    }
+     
+      public List<Ficha> GetFichaPorMedicos(int medicoId) {
+        Query q = this.em.createQuery("select f from Ficha f where f.medico.id =:medicoId ")
+                .setParameter("medicoId", medicoId);
+       
+        return (List<Ficha>) q.getResultList();
     }
 }

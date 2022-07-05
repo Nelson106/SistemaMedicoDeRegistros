@@ -20,9 +20,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="paciente")
-@JsonIdentityInfo(
-  generator = ObjectIdGenerators.PropertyGenerator.class, 
-  property = "id")
+
 public class Paciente {
     @Id
     @Column(name="id")

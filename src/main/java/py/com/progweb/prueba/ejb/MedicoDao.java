@@ -36,6 +36,20 @@ public class MedicoDao {
         return em.find(Medico.class, medicoId);
     }
      
+    public Medico GetMedicoEspecialidad(String especialidad) {
+        Query q = this.em.createQuery("select m from Medico m where m.especialidad=:especialidad")
+                .setParameter("especialidad", especialidad);
+        return (Medico) q.getSingleResult();
+       
+    }
+    
+    public Medico GetMedicoCedula(String cedula) {
+        
+        Query q = this.em.createQuery("select m from Medico m where m.cedula=:cedula")
+                .setParameter("cedula", cedula);
+        return (Medico)  q.getSingleResult();
+       
+    }
     public void UpdateMedico(Medico medico){
         if(em.find(Medico.class, medico.getId())!=null){
            
