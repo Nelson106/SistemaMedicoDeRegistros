@@ -2,8 +2,11 @@ py\com\progweb\prueba\ejb\PersonaDao.class
 py\com\progweb\prueba\model\Persona.class
 py\com\progweb\prueba\model\Paciente.class
 py\com\progweb\prueba\rest\PacienteRest.class
+<<<<<<< Upstream, based on origin/nelson
 py\com\progweb\prueba\rest\MedicoRest.class
 py\com\progweb\prueba\rest\DetalleRest.class
+=======
+>>>>>>> 4060692 funcionando
 py\com\progweb\prueba\ejb\PacienteDao.class
 py\com\progweb\prueba\rest\ApplicationConfig.class
 py\com\progweb\prueba\rest\PersonaRest.class
