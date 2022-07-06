@@ -62,5 +62,13 @@ public class MedicoDao {
         Medico medico=GetMedico(id);
         em.remove(medico);
     }
-     
+    
+    
+    public Medico GetMedicoLogin(String email,String password) {
+       
+        Query q = this.em.createQuery("select m from Medico m where m.email=:email and m.password=:password")
+                .setParameter("email", email)
+                .setParameter("password", password);
+        return (Medico)  q.getSingleResult();
+    }
 }

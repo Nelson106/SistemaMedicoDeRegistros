@@ -8,7 +8,7 @@ const URID='http://localhost:8080/prueba/detalle'
 
 const CompCrearFicha=() =>{
     const [Especialidad,setEspecialidad]=useState([])
-    const [PacienteElegido,setPacienteElegido]=useState([])
+    const [Paciente,setPaciente]=useState([])
     const [Motivo,setMotivo]=useState([])
     const [Diagnostico,setDiagnostico]=useState([])
     const [Tratamiento,setTratamiento]=useState([])
@@ -90,19 +90,19 @@ const CompCrearFicha=() =>{
                             className="form-control"
                         />
                    </div>
-                   <Link to={'medico/' + Medico} className='btn btn-info'><i className="fa-solid fa-file-lines"></i> BUSCAR </Link>
+                   <Link to={'medicoFicha/' + Medico} className='btn btn-info'><i className="fa-solid fa-file-lines"></i> BUSCAR </Link>
                  </form>
                  <form onSubmit={GuardarDetalle}>
                    <div className=" mb-3">
                         <label className="form-label">Paciente</label>
                         <input 
-                            value={Motivo}
-                            onChange={(e)=>setMotivo(e.target.value)}
+                            value={Paciente}
+                            onChange={(e)=>setPaciente(e.target.value)}
                             type="text"
                             className="form-control"
                         />
                    </div>
-                   <button type="submit" className="btn btn-primary">Guardar detalles</button>
+                   <Link to={'pacienteFicha/' + Paciente} className='btn btn-info'><i className="fa-solid fa-file-lines"></i> BUSCAR </Link>
                  </form>
                  <form onSubmit={GuardarDetalle}>
                    <div className=" mb-3">

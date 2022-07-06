@@ -78,4 +78,12 @@ public class MedicoRest {
         medicoDao.DeleteMedico(medicoId);
         return Response.ok().build();
     }
+    
+    
+    @GET
+    @Path("/login/{email}/{password}")
+    public Response getMedicoLogin(@PathParam("email") String email,@PathParam("password") String password) {
+               System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        return Response.ok(medicoDao.GetMedicoLogin(email,password)).build();
+    }
 }

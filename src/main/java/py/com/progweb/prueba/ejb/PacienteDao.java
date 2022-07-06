@@ -7,6 +7,7 @@ package py.com.progweb.prueba.ejb;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.*;
+import py.com.progweb.prueba.model.Medico;
 import py.com.progweb.prueba.model.Paciente;
 
 /**
@@ -49,12 +50,14 @@ public class PacienteDao {
     }
      
     
-     public List<Paciente> ListarPacienteaApellido( String apellido) {
-        Query q = this.em.createQuery("select p from Paciente p where apellido=:apellido")
-                .setParameter("apellido",apellido);
-        return (List<Paciente>) q.getResultList();
+  
+     public Paciente GetPacienteCedula(String cedula) {
+        
+        Query q = this.em.createQuery("select p from Paciente p where p.cedula=:cedula")
+                .setParameter("cedula", cedula);
+        return (Paciente)  q.getSingleResult();
+       
     }
-     
      
     
 }

@@ -60,4 +60,11 @@ public class PacienteRest {
         pacienteDao.DeletePaciente(pacienteId);
         return Response.ok().build();
     }
+    
+    @POST
+    @Path("/cedula")
+    public Response getMedicoCedula(Paciente paciente) {
+           
+        return Response.ok(pacienteDao.GetPacienteCedula(paciente.getCedula())).build();
+    }
 }

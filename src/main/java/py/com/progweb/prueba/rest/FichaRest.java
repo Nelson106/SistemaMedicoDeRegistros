@@ -101,4 +101,32 @@ public class FichaRest {
                
         return Response.ok(fichaDao.GetFichaPorMedicos(medicoId)).build();
     }
+    @GET
+    @Path("/fichaMedico/{cedula}/paciente/{pacienteId}")
+    public Response GetFichaPorMedicoYPaciente(@PathParam("cedula") String cedula,@PathParam("pacienteId") int pacienteId) {
+               
+        return Response.ok(fichaDao.GetFichaPorMedicoYPaciente(cedula,pacienteId)).build();
+    }
+    
+    @POST
+    @Path("/fichaMedicoCedula")
+    public Response GetFichaPorMedicosCedula(Medico medico) {
+               
+        return Response.ok(fichaDao.GetFichaPorMedicosCedula(medico.getCedula())).build();
+    }
+    
+    @POST
+    @Path("/fichaPacienteCedula")
+    public Response GetFichaPorPacienteCedula(Paciente paciente) {
+         System.out.println("aaaaaaaaaaaaaaaaaaaaaa"+paciente.getCedula());
+        return Response.ok(fichaDao.GetFichaPorPacienteCedula(paciente.getCedula())).build();
+    }
+    
+    @GET
+    @Path("/fichaPaciente/{cedula}/medico/{medicoId}")
+    public Response GetFichaPorPacienteYMedico(@PathParam("cedula") String cedula,@PathParam("medicoId") int medicoId) {
+               
+        return Response.ok(fichaDao.GetFichaPorPacienteYMedico(cedula,medicoId)).build();
+    }
+    
 }
