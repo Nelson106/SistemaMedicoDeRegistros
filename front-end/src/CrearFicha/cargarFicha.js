@@ -14,7 +14,7 @@ const CompCrearFicha=() =>{
         getPacientes()
     },[])
 
-    
+
 
     const {medicoId}=useParams()
     const navigate=useNavigate()
@@ -80,6 +80,8 @@ const CompCrearFicha=() =>{
                         </tbody>
                     </table>
                 </div>
+
+               
             </div>
             <button type="submit" className="btn btn-primary">Crear Ficha</button>
             </form>

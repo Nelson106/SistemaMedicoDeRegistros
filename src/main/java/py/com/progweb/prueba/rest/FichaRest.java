@@ -116,6 +116,13 @@ public class FichaRest {
     }
     
     @POST
+    @Path("/fichaMedicoEspecialidad")
+    public Response GetFichaPorMedicosEspecialidad(Medico medico) {
+               
+        return Response.ok(fichaDao.GetFichaPorMedicosEspecialidad(medico.getEspecialidad())).build();
+    }
+    
+    @POST
     @Path("/fichaPacienteCedula")
     public Response GetFichaPorPacienteCedula(Paciente paciente) {
          System.out.println("aaaaaaaaaaaaaaaaaaaaaa"+paciente.getCedula());

@@ -50,6 +50,8 @@ public class MedicoDao {
         return (Medico)  q.getSingleResult();
        
     }
+    
+    
     public void UpdateMedico(Medico medico){
         if(em.find(Medico.class, medico.getId())!=null){
            

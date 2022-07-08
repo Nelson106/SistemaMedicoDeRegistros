@@ -2,7 +2,7 @@ import axios from "axios";
 //import { use } from "express/lib/router";
 import { useState,useEffect } from "react";
 import { Link,useNavigate, useParams } from "react-router-dom";
-
+import SelectSearch from "react-select-search";
 const URIP='http://localhost:8080/prueba/paciente/'
 const URIF='http://localhost:8080/prueba/ficha/fichaMedico'
 
@@ -22,7 +22,7 @@ const CompListarFicha=() =>{
        setFichas(res.data)
     }
    
-    console.log("Fichaaaaaa",Fichas)
+    console.log("elegido",PacienteElegido)
     const GuardarFicha=async(e)=>{
         e.preventDefault()
         let fecha=new Date()
@@ -57,34 +57,25 @@ const CompListarFicha=() =>{
             <form onSubmit={GuardarFicha}>
             <div className="row">
                 <div className="col">
-                   
-                    <th>Lista de Fichas</th>
-                    <table className="table">
-                        <thead className="table-primary">
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>  
-                                <th>Accion</th>           
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {Fichas.map ((Ficha)=>(
-                                <tr key={Ficha.id}>
-                                    <td>{Ficha.paciente.id}</td>
-                                    <td>{Ficha.paciente.nombre}</td>
-                                    <td>{Ficha.paciente.apellido}</td>
+                    <label>LISTA DE FICHAS</label>
+                <select name="pacienteId" className="form-control" value={FichaActual} onChange={(e)=>setFichaActual(e.target.value)}>
+                {Fichas.map ((Ficha)=>(
+                                <option key={Ficha.id} value={Ficha.id}  >
+                                    {Ficha.paciente.nombre}
                                    
-                                    <td>
-                                        <Link to={'ficha/' + Ficha.id} className='btn btn-info'><i className="fa-solid fa-file-lines"></i> CARGAR DETALLES </Link>
-                                    </td>
-                                </tr>
+                                </option>
                             ))}
-                        </tbody>
-                    </table>
+                </select>
+                   
                 </div>
             </div>
-            <Link to={'cargarFicha/'} className='btn btn-info'><i className="fa-solid fa-file-lines"></i> CREAR FICHA </Link>
+
+           
+            <Link to={'ficha/' + FichaActual} className='btn btn-info'><i className="fa-solid fa-file-lines"></i> CARGAR DETALLES </Link>
+            
+            <Link to={'/filtros' } className='btn btn-info'><i className="fa-solid fa-file-lines"></i> Filtros </Link>
+            <Link to={'sinFichas' } className='btn btn-info'><i className="fa-solid fa-file-lines"></i> CREAR FICHA </Link>
+            
             </form>
         </div>
 

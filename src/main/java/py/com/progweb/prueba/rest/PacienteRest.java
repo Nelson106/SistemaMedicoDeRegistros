@@ -67,4 +67,11 @@ public class PacienteRest {
            
         return Response.ok(pacienteDao.GetPacienteCedula(paciente.getCedula())).build();
     }
+    
+    @GET
+    @Path("/sinFichas/{medicoId}")
+    public Response listarPacientes(@PathParam("medicoId") int medicoId) {
+        return Response.ok(pacienteDao.GetPacienteSinFicha(medicoId)).build();
+    }
+    
 }

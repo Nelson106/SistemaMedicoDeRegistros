@@ -15,6 +15,10 @@ import CompDetallesMedicoCedula from './filtros/medicoDetalleCedula';
 import CompFichaMedicoCedula from './filtros/medicosFichaCedula';
 import CompFichaPacienteCedula from './filtros/pacienteFichaCedula';
 import CompDetallesPacienteCedula from './filtros/pacienteDetalleCedula';
+import CompCrearPaciente from './CrearPaciente/crearPaciente';
+import CompFichaEspecialidad from './filtros/medicoFichaEspecialidad';
+
+import CompSinFichas from './CrearFicha/listarPacientesSinFichas';
 function App() {
   return (
     <div className="App">
@@ -32,7 +36,7 @@ function App() {
               <Route path='medicos/fichaMedico/:medicoId/ficha/:fichaId' element={<CompCargarDetalle/>} />
               <Route path='medicos/fichaMedico/:medicoId' element={<CompListarFichaPorMedico/>} />
               <Route path='filtros' element={<CompFiltros/>} />
-              <Route path='filtros/especialidad/:especialidad' element={<CompEspecialidad/>} />
+              <Route path='filtros/especialidad/:especialidad' element={<CompFichaEspecialidad/>} />
              
               <Route path='filtros/medicoFicha/:cedula' element={<CompFichaMedicoCedula/>} />
               <Route path='filtros/medicoFicha/:cedula/paciente/:pacienteId' element={<CompDetallesMedicoCedula/>} />
@@ -40,6 +44,14 @@ function App() {
               <Route path='filtros/pacienteFicha/:cedula/medico/:medicoId' element={<CompDetallesPacienteCedula/>} />
 
               <Route path='/login' element={<CompLogin/>} />
+
+              <Route path='medicos/fichaMedico/:medicoId/sinFichas' element={<CompListarFichaPorMedico/>} />
+
+
+             
+
+              <Route path='medicos/fichaMedico/:medicoId/sinFichas/' element={<CompSinFichas/>} />
+              <Route path='medicos/fichaMedico/:medicoId/sinFichas/crearPaciente' element={<CompCrearPaciente/>} />
           </Routes>
       </BrowserRouter>
     </div>

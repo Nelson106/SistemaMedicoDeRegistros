@@ -7,6 +7,7 @@ package py.com.progweb.prueba.ejb;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.*;
+import py.com.progweb.prueba.model.Ficha;
 import py.com.progweb.prueba.model.Medico;
 import py.com.progweb.prueba.model.Paciente;
 
@@ -56,6 +57,15 @@ public class PacienteDao {
         Query q = this.em.createQuery("select p from Paciente p where p.cedula=:cedula")
                 .setParameter("cedula", cedula);
         return (Paciente)  q.getSingleResult();
+       
+    }
+     
+     //traer todas las fichas que no corresponda al medico y asi obtener los pacientes
+      public List<Ficha> GetPacienteSinFicha(int id) {
+        
+        Query q = this.em.createQuery("select f from Ficha f where not f.medico.id=:id")
+                .setParameter("id", id);
+        return (List<Ficha>) q.getResultList();
        
     }
      

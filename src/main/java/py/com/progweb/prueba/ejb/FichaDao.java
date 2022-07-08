@@ -130,6 +130,13 @@ public class FichaDao {
         return (List<Ficha>) q.getResultList();
     }
       
+        public List<Ficha> GetFichaPorMedicosEspecialidad(String especialidad) {
+        Query q = this.em.createQuery("select f from Ficha f where f.medico.especialidad =:especialidad ")
+                .setParameter("especialidad", especialidad);
+       
+        return (List<Ficha>) q.getResultList();
+    }
+      
       public List<Ficha> GetFichaPorPacienteCedula(String cedula) {
         Query q = this.em.createQuery("select f from Ficha f where f.paciente.cedula =:cedula ")
                 .setParameter("cedula", cedula);
